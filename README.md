@@ -1,8 +1,10 @@
 Useful links:
 
-* https://canvas.sussex.ac.uk/courses/32016/discussion_topics/422539
+* Discussion https://canvas.sussex.ac.uk/courses/32016/discussion_topics/422539
 
-* https://canvas.sussex.ac.uk/courses/32016/pages/assignment-brief-cpu-scheduling
+* Assignment https://canvas.sussex.ac.uk/courses/32016/pages/assignment-brief-cpu-scheduling
+
+* Report https://docs.google.com/document/d/13I0oWljWTlyUC_2-FGeXO28japALxIxC8xjj9gVMDso/edit?tab=t.0
 
 User threads & Kernal threads
 
@@ -12,7 +14,6 @@ Goals:
     Implement schedule algorithms - All seem to relate back to abstract scheduler
 
 Important Points about Implementation:
-
 
     Non-Preemptive vs. Preemptive: Pay close attention to whether an algorithm should be preemptive or non-preemptive. The assignment clarifies that RR should be treated as non-preemptive in their simulator.
 
@@ -84,3 +85,10 @@ Submission:
                 All .java files from the original os-coursework1.zip, including the five files you modified (Process.java, RRScheduler.java, IdealSJFScheduler.java, FeedbackRRScheduler.java, SJFScheduler.java).
             run.sh or run.bat: A script that can automatically re-run your experiments and generate the output files from the input files and parameter files.
 
+Use 5 different seeds as testing
+
+For example, you can use the workloads discussed during the lectures. ??? Find link to this lecture(s)
+
+Go through and comment the meaning of each line in input and simulator parameters
+
+Time unit is in ms (10: CREATE process 2) e.g: 10ms
