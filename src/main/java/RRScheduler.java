@@ -1,4 +1,10 @@
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
+import java.util.Queue;
+import java.util.LinkedList;
+// Time quantum, basically run for a set amount of time, because it's non-preemptive will do time quantum or until
+// it finishes it work
 
 /**
  * Round Robin Scheduler
@@ -7,7 +13,32 @@ import java.util.Properties;
  */
 public class RRScheduler extends AbstractScheduler {
 
+  private Queue<Process> readyQueue;
+  private int timeQuantum;
+
   // TODO
+  public RRScheduler() {
+    this.readyQueue = new LinkedList<>();
+    this.timeQuantum = loadTimeQuantumFromFile();
+  }
+
+  private int loadTimeQuantumFromFile(){
+    Properties properties = new Properties();
+    try{
+      FileInputStream input = new FileInputStream("experiment1/simulator_parameters.prp");
+      properties.load(input);
+
+      String timeQuantumStr = properties.getProperty("timeQuantum");
+      System.out.println(Integer.parseInt(timeQuantumStr));
+      return Integer.parseInt(timeQuantumStr); // conver to string
+    }
+    catch (IOException | NumberFormatException e) {
+      e.printStackTrace();
+
+      // For whatever reason if it's not set
+      return 20;
+    }
+  }
 
   /**
    * Adds a process to the ready queue.
@@ -17,6 +48,7 @@ public class RRScheduler extends AbstractScheduler {
   public void ready(Process process, boolean usedFullTimeQuantum) {
 
     // TODO
+
 
   }
 
@@ -28,7 +60,16 @@ public class RRScheduler extends AbstractScheduler {
   public Process schedule() {
 
     // TODO
+    if (readyQueue.isEmpty()){
+      return null; // No process to schedule
+    }
+    Process currentProcess = readyQueue.poll();
 
-    return null;
+    runProcess(currentProcess);
+
+    if (!currentProcess.isFinished()){
+      readyQueue.offer(currentProcess);
+    }
+    return currentProcess;
   }
 }

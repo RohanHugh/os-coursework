@@ -6,13 +6,25 @@ Useful links:
 
 * Report https://docs.google.com/document/d/13I0oWljWTlyUC_2-FGeXO28japALxIxC8xjj9gVMDso/edit?tab=t.0
 
-User threads & Kernal threads
+* Lectures:
+  https://sussex.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d274c080-0c1e-4b2d-9bc7-b28b00d64645
+  https://sussex.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e905de1e-52b2-47fd-8a07-b28f0135ff7e
+  https://sussex.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c521a89c-0566-4fb0-bb17-b29200f0ce4e
 
+<br>
 Goals:
 
-    Report
-    Implement schedule algorithms - All seem to relate back to abstract scheduler
+    [] Report
+    [] Round Robin (RRScheduler.java) - Read the timeQuantum from the parameters. The scheduler is non-preemptive*.
+    [] Ideal Shortest Job First (IdealSJFScheduler.java) - You can use the getNextBurst() method to get the duration of the next burst for each process. The scheduler is non-preemptive.
+    [] Multi-level feedback queue with Round Robin (FeedbackRRScheduler.java) - The easiest way to compute a multi-level queue is to use a priority queue where priorities correspond to the levels (lower number means higher priority). Implement the following feedback: a process is demoted if it used its full time slice. The scheduler is preemptive.
+    [] Shortest Job First using exponential averaging (SJFScheduler.java) - Read the initialBurstEstimate () and alphaBurstEstimate () from the parameters. For each process,  use exponential averaging to estimate the duration of the process' next burst (which will then define the priority of the process) from its previous burst durations. You can use the getRecentBurst() method to get the duration of the most recent CPU burst of a process. The scheduler is non-preemptive.
 
+Remark: Note that there are placeholders, as TODO comments, in the code, where you are expected to add code. You may have to create new or override existing methods as well - all abstract methods in the AbstractScheduler class must be overridden, otherwise your code won't compile. The implementation of the schedulers should be based on the material discussed in the lectures, where they are clearly defined. Do NOT alter the structure of the given classes but only add code where deemed necessary.
+
+*Important: here we say that the RR scheduler is non-preemptive which contradicts what was presented in the lecture. This is because the simulator considers as preemptive a scheduler that will preempt a running process only when a process (new or previously blocked) appears in the ready queue, but not when the allocated time quantum is consumed by a process. Dealing with completed time quanta is done at a different point in the code (setRunning() in the BurstProcess class). The RR scheduler will therefore be dealt with as non-preemptive here, as described above.
+
+<br>
 Important Points about Implementation:
 
     Non-Preemptive vs. Preemptive: Pay close attention to whether an algorithm should be preemptive or non-preemptive. The assignment clarifies that RR should be treated as non-preemptive in their simulator.
@@ -25,8 +37,8 @@ Important Points about Implementation:
 
     Debugging: I can add print statements to System.out for debugging, but remove or comment them out before submitting.
 
+<br>
 Your Experiments:
-
 
     Design Three Experiments: You need to design three experiments, each investigating a different aspect of CPU scheduling. The assignment gives some general example questions to guide you, such as:
         How do process characteristics (e.g., burst lengths, arrival times) affect algorithm performance?
@@ -44,11 +56,10 @@ Your Experiments:
 
     CPU Utilization: Pay attention to the CPU utilization of the system. You may need to configure parameters to get appropriate workload percentages.
 
-
+<br>
 Report Writing:
 
 Your report should follow this structure:
-
 
     Introduction: Briefly describe the goal of the overall assignment and what you are trying to achieve.
 
@@ -68,7 +79,7 @@ Your report should follow this structure:
 
     Conclusions: Summarize your findings and the insights you gained about the different scheduling algorithms.
 
-
+<br>
 Submission:
 
 
@@ -85,10 +96,11 @@ Submission:
                 All .java files from the original os-coursework1.zip, including the five files you modified (Process.java, RRScheduler.java, IdealSJFScheduler.java, FeedbackRRScheduler.java, SJFScheduler.java).
             run.sh or run.bat: A script that can automatically re-run your experiments and generate the output files from the input files and parameter files.
 
-Use 5 different seeds as testing
-
-For example, you can use the workloads discussed during the lectures. ??? Find link to this lecture(s)
-
-Go through and comment the meaning of each line in input and simulator parameters
+<br>
+Use 5 different seeds as testing then calculate mean / median (for outliers)
 
 Time unit is in ms (10: CREATE process 2) e.g: 10ms
+
+Get Excel with Office deployment tool on Windows 10 PC for graphs
+
+Use CTRL + F to find all // TODO's

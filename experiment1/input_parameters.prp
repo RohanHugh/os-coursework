@@ -1,7 +1,31 @@
 numberOfProcesses=5
+#   Defines the total number of processes to simulate.
+#   In this case, 5 processes will be generated for scheduling.
+
 staticPriority=0
+#   Specifies a static priority for the processes, set to 0.
+#   This value can be used by scheduling algorithms to determine
+#   the priority of processes. A priority of 0 may indicate no special priority.
+
 meanInterArrival=150.0
+#   Sets the average inter-arrival time between processes.
+#   On average, new processes will arrive every 150 time units.
+#   The inter-arrival times are typically modeled with an exponential distribution.
+
 meanCpuBurst=15.0
+#   Defines the average time a process will use the CPU before needing to perform I/O.
+#   The CPU burst times are typically modeled using an exponential distribution
+#   with a mean value of 15 time units.
+
 meanIOBurst=15.0
+#   Specifies the average time a process spends in I/O operations before needing CPU time again.
+#   Like the CPU burst, I/O burst times are usually modeled with an exponential distribution
+#   using this mean value.
+
 meanNumberBursts=2.0
+#   Sets the average number of CPU and I/O bursts per process.
+#   In this case, each process will, on average, have 2 bursts (CPU + I/O cycles).
+
 seed=270826029269605
+#   A random seed used to initialize the random number generator.
+#   This ensures that the simulation is reproducible with the same results each time.

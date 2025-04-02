@@ -1,7 +1,27 @@
 scheduler=FcfsScheduler
+#   Specifies the type of scheduling algorithm used in the simulation.
+#   In this case, the First-Come, First-Served (FCFS) scheduler is used.
+
 timeLimit=10000
+#   Sets the time limit for the simulation. The simulation will run for a maximum of 10,000 time units.
+
 periodic=false
+#   Specifies whether periodic scheduling is enabled.
+#   In this case, it is set to false, meaning the scheduling is not periodic.
+
 interruptTime=0
+#   Defines the time interval between interruptions (if applicable).
+#   A value of 0 means there are no interruptions.
+
 timeQuantum=20
+#   Sets the time quantum used by the scheduler, particularly relevant for time-sharing schedulers.
+#   For FCFS, this value may not be used, but for other schedulers like Round Robin,
+#   it determines how long each process can run before being interrupted.
+
 initialBurstEstimate=10
+#   Provides an initial estimate for the CPU burst time for processes.
+#   This estimate is typically used by adaptive scheduling algorithms to predict the future CPU burst times.
+
 alphaBurstEstimate=0.5
+#   Sets the alpha value for the exponential weighted moving average used to estimate CPU burst times.
+#   A value of 0.5 means that the estimation gives equal weight to the previous estimate and the actual burst.

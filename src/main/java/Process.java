@@ -28,9 +28,8 @@ public abstract class Process implements Comparable<Process> {
    */
   public int getWaitingTime() {
 
-    // TODO
-    
-    return 0;
+    return getTurnaroundTime() - cpuTime;
+
   }
 
   /**
@@ -38,9 +37,8 @@ public abstract class Process implements Comparable<Process> {
    */
   public int getTurnaroundTime() {
 
-    // TODO
-    
-    return 0;
+    return terminatedTime - createdTime;
+
   }
 
   /**
@@ -48,9 +46,8 @@ public abstract class Process implements Comparable<Process> {
    */
   public int getResponseTime() {
 
-    // TODO
-    
-    return 0;
+    return startedTime - createdTime;
+
   }
 
   /**
