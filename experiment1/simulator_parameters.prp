@@ -1,4 +1,4 @@
-scheduler=FcfsScheduler
+scheduler=RRScheduler
 #   Specifies the type of scheduling algorithm used in the simulation.
 #   In this case, the First-Come, First-Served (FCFS) scheduler is used.
 

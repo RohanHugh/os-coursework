@@ -13,14 +13,8 @@ import java.util.LinkedList;
  */
 public class RRScheduler extends AbstractScheduler {
 
-  private Queue<Process> readyQueue;
+  private Queue<Process> readyQueue = new LinkedList<>();
   private int timeQuantum;
-
-  // TODO
-  public RRScheduler() {
-    this.readyQueue = new LinkedList<>();
-    this.timeQuantum = loadTimeQuantumFromFile();
-  }
 
   private int loadTimeQuantumFromFile(){
     Properties properties = new Properties();
@@ -45,10 +39,10 @@ public class RRScheduler extends AbstractScheduler {
    * usedFullTimeQuantum is true if process is being moved to ready
    * after having fully used its time quantum.
    */
+
   public void ready(Process process, boolean usedFullTimeQuantum) {
 
-    // TODO
-
+    readyQueue.add(process);
 
   }
 
@@ -59,17 +53,25 @@ public class RRScheduler extends AbstractScheduler {
    */
   public Process schedule() {
 
-    // TODO
     if (readyQueue.isEmpty()){
       return null; // No process to schedule
     }
-    Process currentProcess = readyQueue.poll();
 
-    runProcess(currentProcess);
-
-    if (!currentProcess.isFinished()){
-      readyQueue.offer(currentProcess);
-    }
-    return currentProcess;
+    return readyQueue.poll();
   }
+
+  @Override
+
+  public void initialize(Properties parameters){
+
+    timeQuantum = loadTimeQuantumFromFile();
+
+  }
+
+  public int getTimeQuantum(){
+    return timeQuantum;
+  }
+
+  public boolean isPremptive(){
+    return true;}
 }

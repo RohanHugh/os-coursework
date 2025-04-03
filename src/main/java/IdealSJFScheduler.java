@@ -1,4 +1,10 @@
+import java.util.LinkedList;
 import java.util.Properties;
+import java.util.Queue;
+
+// Priority queue.
+// Check when process is finished & Check if it blocks (Non-premptive)
+// Burst time
 
 /**
  * Ideal Shortest Job First Scheduler
@@ -8,6 +14,8 @@ import java.util.Properties;
 public class IdealSJFScheduler extends AbstractScheduler {
 
   // TODO
+  private Queue<Process> readyQueue = new LinkedList<>();
+
 
   /**
    * Adds a process to the ready queue.
@@ -17,6 +25,7 @@ public class IdealSJFScheduler extends AbstractScheduler {
   public void ready(Process process, boolean usedFullTimeQuantum) {
 
     // TODO
+    readyQueue.add(process);
 
   }
 
@@ -31,4 +40,9 @@ public class IdealSJFScheduler extends AbstractScheduler {
 
     return null;
   }
+
+  public boolean isPremptive(){
+    return false;
+  }
+
 }

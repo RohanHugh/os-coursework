@@ -15,7 +15,7 @@ Useful links:
 Goals:
 
     [] Report
-    [] Round Robin (RRScheduler.java) - Read the timeQuantum from the parameters. The scheduler is non-preemptive*.
+    [x] Round Robin (RRScheduler.java) - Read the timeQuantum from the parameters. The scheduler is non-preemptive*.
     [] Ideal Shortest Job First (IdealSJFScheduler.java) - You can use the getNextBurst() method to get the duration of the next burst for each process. The scheduler is non-preemptive.
     [] Multi-level feedback queue with Round Robin (FeedbackRRScheduler.java) - The easiest way to compute a multi-level queue is to use a priority queue where priorities correspond to the levels (lower number means higher priority). Implement the following feedback: a process is demoted if it used its full time slice. The scheduler is preemptive.
     [] Shortest Job First using exponential averaging (SJFScheduler.java) - Read the initialBurstEstimate () and alphaBurstEstimate () from the parameters. For each process,  use exponential averaging to estimate the duration of the process' next burst (which will then define the priority of the process) from its previous burst durations. You can use the getRecentBurst() method to get the duration of the most recent CPU burst of a process. The scheduler is non-preemptive.
